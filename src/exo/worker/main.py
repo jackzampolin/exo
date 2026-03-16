@@ -43,7 +43,7 @@ from exo.shared.types.tasks import (
     TextGeneration,
 )
 from exo.shared.types.topology import Connection, SocketConnection
-from exo.shared.types.worker.downloads import DownloadCompleted
+from exo.shared.types.worker.downloads import ModelReady
 from exo.shared.types.worker.runners import RunnerId
 from exo.utils.channels import Receiver, Sender, channel
 from exo.utils.info_gatherer.info_gatherer import GatheredInfo, InfoGatherer
@@ -191,7 +191,7 @@ class Worker:
                         logger.info(f"Model {model_id} found at {found_path}")
                         await self.event_sender.send(
                             NodeDownloadProgress(
-                                download_progress=DownloadCompleted(
+                                download_progress=ModelReady(
                                     node_id=self.node_id,
                                     shard_metadata=shard,
                                     model_directory=str(found_path),
