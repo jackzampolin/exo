@@ -193,6 +193,7 @@ impl PyNetworkingHandle {
         // get identity
         let identity = identity.borrow().0.clone();
 
+
         // Spawn the entire swarm lifecycle on a tokio worker thread.
         // Both swarm creation AND its event loop must run inside tokio::spawn
         // so that all internal timers (mDNS query interval, ping keepalive,
